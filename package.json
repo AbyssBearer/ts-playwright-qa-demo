@@ -1,0 +1,30 @@
+{
+  "name": "ts-playwright-qa-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "tsc --noEmit",
+    "test:headed": "npm run pretest && playwright test --headed",
+    "test:single:headed": "npm run pretest && playwright test -g \"get started link\" --headed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbyssBearer/ts-playwright-qa-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbyssBearer/ts-playwright-qa-demo/issues"
+  },
+  "homepage": "https://github.com/AbyssBearer/ts-playwright-qa-demo#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1"
+  }
+}

@@ -7,7 +7,8 @@
     "lint:fix": "eslint --fix",
     "type-check": "tsc --noEmit",
     "test:headed": "npm run lint:fix && npm run type-check && playwright test --headed",
-    "test:single:headed": "npm run lint:fix && npm run type-check && playwright test -g \"get started link\" --headed"
+    "test:single:headed": "npm run lint:fix && npm run type-check && playwright test -g \"get started link\" --headed",
+    "prepare": "husky || true"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "dotenv": "^17.2.3",
     "eslint": "^9.36.0",
     "globals": "^16.4.0",
+    "husky": "^9.1.7",
     "jiti": "^2.6.1",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.45.0"

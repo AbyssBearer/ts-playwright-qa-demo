@@ -1,0 +1,5 @@
+echo "Running ESLint with auto-fix..."
+npm run lint:fix
+
+echo "Running TypeScript type check..."
+npm run type-check

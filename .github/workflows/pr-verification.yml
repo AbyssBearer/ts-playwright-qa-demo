@@ -1,0 +1,43 @@
+name: PR Verification
+
+on:
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-verification-${{ github.event.pull_request.head.sha }}
+  cancel-in-progress: true
+
+jobs:
+  quality-checks:
+    name: ${{ matrix.task.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        task:
+          - id: tsc
+            name: TypeScript Check
+            cmd: npx tsc --noEmit
+          - id: eslint
+            name: ESLint Check
+            cmd: npx eslint . --max-warnings=0
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ${{ matrix.task.name }}
+        run: ${{ matrix.task.cmd }}
